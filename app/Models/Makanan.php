@@ -20,4 +20,9 @@ class Makanan extends Model
     {
         return $this->belongsTo(Penjual::class);
     }
+
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class);
+    }
 }

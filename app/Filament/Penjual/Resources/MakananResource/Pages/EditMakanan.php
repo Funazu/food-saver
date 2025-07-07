@@ -3,6 +3,7 @@
 namespace App\Filament\Penjual\Resources\MakananResource\Pages;
 
 use App\Filament\Penjual\Resources\MakananResource;
+use App\Models\Makanan;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

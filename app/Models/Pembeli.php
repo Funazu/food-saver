@@ -21,4 +21,14 @@ class Pembeli extends Model
     {
         return $this->foto_profil ? asset('storage/' . $this->foto_profil) : asset('images/default-profile.png');
     }
+
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class);
+    }
+
+    public function ulasan()
+    {
+        return $this->hasMany(Ulasan::class);
+    }
 }

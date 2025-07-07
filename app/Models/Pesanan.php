@@ -5,25 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Penjual extends Model
+class Pesanan extends Model
 {
     use HasFactory;
 
+    protected $table = 'pesanans';
     protected $guarded = ['id'];
 
-    public function user()
+    public function pembeli()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Pembeli::class);
+    }
+
+    public function penjual()
+    {
+        return $this->belongsTo(Penjual::class);
     }
 
     public function makanan()
     {
-        return $this->hasMany(Makanan::class);
-    }
-
-    public function pesanan()
-    {
-        return $this->hasMany(Pesanan::class);
+        return $this->belongsTo(Makanan::class);
     }
 
     public function ulasan()

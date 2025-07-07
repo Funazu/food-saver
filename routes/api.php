@@ -18,13 +18,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::prefix('v1')->group(function () {
     Route::prefix('pembeli')->group(function () {
         Route::post('/register', [App\Http\Controllers\API\Pembeli\AuthController::class, 'register']);
         Route::post('/login', [App\Http\Controllers\API\Pembeli\AuthController::class, 'login']);
 
+        Route::get('/makanan', [App\Http\Controllers\API\Pembeli\MakananController::class, 'index']);
+        Route::get('/makanan/{id}', [App\Http\Controllers\API\Pembeli\MakananController::class, 'detail']);
+        Route::get('/kategori', [App\Http\Controllers\API\Pembeli\MakananController::class, 'kategori']);
+        
         Route::middleware('auth:sanctum')->group(function () {
             Route::get('/profile', [App\Http\Controllers\API\Pembeli\ProfileController::class, 'show']);
+
+            Route::get('/pesanan', [App\Http\Controllers\API\Pembeli\PesananController::class, 'index']);
+            Route::post('/pesan', [App\Http\Controllers\API\Pembeli\PesananController::class, 'store']);
+            Route::post('/pesanan/{id}/batal', [App\Http\Controllers\API\Pembeli\PesananController::class, 'batalkanPesanan']);
+            // Route::post('/pesanan/{id}/ambil', [App\Http\Controllers\API\Pembeli\PesananController::class, 'ambilPesanan']);
+            Route::post('/pesanan/{id}/ulasan', [App\Http\Controllers\API\Pembeli\PesananController::class, 'buatUlasan']);
         });
     });
 });
