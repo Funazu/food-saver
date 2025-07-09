@@ -2,6 +2,12 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\PenjualanResource\Widgets\TotalPenjualan;
+use App\Filament\Resources\PesananResource\Widgets\PendapatanChart;
+use App\Filament\Resources\PesananResource\Widgets\Pesanan;
+use App\Filament\Resources\PesananResource\Widgets\PesananChart;
+use App\Filament\Resources\PesananResource\Widgets\TotalPenjualan as WidgetsTotalPenjualan;
+use App\Filament\Resources\PesananResource\Widgets\TotalPesanan;
 use Filament\Http\Middleware\Authenticate;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -29,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => \Filament\Support\Colors\Color::Hex('#16a34a'),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -38,8 +44,12 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                // Widgets\AccountWidget::class,
+                // Widgets\FilamentInfoWidget::class,
+                // TotalPenjualan::class,
+                Pesanan::class,
+                PesananChart::class,
+                PendapatanChart::class,
             ])
             ->middleware([
                 EncryptCookies::class,

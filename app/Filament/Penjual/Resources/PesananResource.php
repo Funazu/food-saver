@@ -21,7 +21,7 @@ class PesananResource extends Resource
 
     protected static ?string $navigationLabel = 'Orders';
     protected static ?string $navigationGroup = 'Manajemen Pesanan';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
 
     public static function form(Form $form): Form
     {
@@ -124,12 +124,11 @@ class PesananResource extends Resource
             ->where('penjual_id', auth()->user()->penjual->id);
     }
 
-
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListPesanans::route('/'),
-            'create' => Pages\CreatePesanan::route('/create'),
+            // 'create' => Pages\CreatePesanan::route('/create'),
             'edit' => Pages\EditPesanan::route('/{record}/edit'),
         ];
     }

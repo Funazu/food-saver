@@ -22,7 +22,7 @@ class MakananResource extends Resource
     protected static ?string $navigationGroup = 'Manajemen Produk';
 
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-cake';
 
     public static function form(Form $form): Form
     {
@@ -80,7 +80,8 @@ class MakananResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->label('Gambar Makanan')
-                    ->directory('makanans'),
+                    ->directory('makanans')
+                    ->disk('public'), // gunakan disk 'public' agar file disimpan di folder public/storage/makanans
             ]);
     }
 

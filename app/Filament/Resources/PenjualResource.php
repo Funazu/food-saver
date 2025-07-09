@@ -21,7 +21,7 @@ class PenjualResource extends Resource
     protected static ?string $navigationLabel = 'Penjual';
     protected static ?string $navigationGroup = 'Manajemen User';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-building-storefront';
 
     public static function form(Form $form): Form
     {

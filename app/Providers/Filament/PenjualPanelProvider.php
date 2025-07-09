@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Penjual\Pages\EditToko as PagesEditToko;
+use App\Filament\Penjual\Resources\NoneResource\Pages\EditToko;
 use App\Http\Middleware\Penjual;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -28,12 +30,13 @@ class PenjualPanelProvider extends PanelProvider
             ->path('penjual')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => \Filament\Support\Colors\Color::Hex('#16a34a'),
             ])
             ->discoverResources(in: app_path('Filament/Penjual/Resources'), for: 'App\\Filament\\Penjual\\Resources')
             ->discoverPages(in: app_path('Filament/Penjual/Pages'), for: 'App\\Filament\\Penjual\\Pages')
             ->pages([
                 Pages\Dashboard::class,
+                PagesEditToko::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Penjual/Widgets'), for: 'App\\Filament\\Penjual\\Widgets')
             ->widgets([

@@ -17,7 +17,7 @@ class MakananResource extends Resource
 {
     protected static ?string $model = Makanan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-cake';
 
     protected static ?string $navigationLabel = 'Makanan';
     protected static ?string $navigationGroup = 'Manajemen Produk';
