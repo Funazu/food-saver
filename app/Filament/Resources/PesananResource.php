@@ -23,6 +23,7 @@ class PesananResource extends Resource
     protected static ?string $navigationLabel = 'Orders';
     protected static ?string $navigationGroup = 'Manajemen Pesanan';
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
+    protected static ?string $pluralModelLabel = 'Daftar Pesanan';
 
     public static function form(Form $form): Form
     {
@@ -68,7 +69,7 @@ class PesananResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

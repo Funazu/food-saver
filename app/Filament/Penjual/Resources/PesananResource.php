@@ -21,6 +21,7 @@ class PesananResource extends Resource
 
     protected static ?string $navigationLabel = 'Orders';
     protected static ?string $navigationGroup = 'Manajemen Pesanan';
+    protected static ?string $pluralModelLabel = 'Daftar Pesanan';
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
 
     public static function form(Form $form): Form

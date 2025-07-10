@@ -58,12 +58,25 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasOne(Pembeli::class);
     }
 
+    // public function canAccessPanel(Panel $panel): bool
+    // {
+    //     return match ($panel->getId()) {
+    //         'admin' => $this->can('access_panel_admin'),
+    //         'penjual' => $this->can('access_panel_penjual'),
+    //         default => false,
+    //     };
+    // }
+
     public function canAccessPanel(Panel $panel): bool
     {
-        return match ($panel->getId()) {
-            'admin' => $this->can('access_panel_admin'),
-            'penjual' => $this->can('access_panel_penjual'),
-            default => false,
-        };
+        if ($panel->getId() === 'penjual') {
+            return $this->hasRole('penjual');
+        }
+
+        if ($panel->getId() === 'admin') {
+            return $this->hasRole('super_admin'); // atau role lain sesuai panel admin kamu
+        }
+
+        return false;
     }
 }

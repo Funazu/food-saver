@@ -4,6 +4,9 @@ namespace App\Providers\Filament;
 
 use App\Filament\Penjual\Pages\EditToko as PagesEditToko;
 use App\Filament\Penjual\Resources\NoneResource\Pages\EditToko;
+use App\Filament\Penjual\Resources\PesananResource\Widgets\PendapatanChart;
+use App\Filament\Penjual\Resources\PesananResource\Widgets\Pesanan;
+use App\Filament\Penjual\Resources\PesananResource\Widgets\PesananChart;
 use App\Http\Middleware\Penjual;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -40,8 +43,11 @@ class PenjualPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Penjual/Widgets'), for: 'App\\Filament\\Penjual\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                // Widgets\AccountWidget::class,
+                // Widgets\FilamentInfoWidget::class,
+                Pesanan::class,
+                PendapatanChart::class,
+                PesananChart::class,
             ])
             ->middleware([
                 EncryptCookies::class,

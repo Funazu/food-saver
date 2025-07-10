@@ -23,6 +23,7 @@ class KategoriResource extends Resource
 
     protected static ?string $navigationLabel = 'Kategori';
     protected static ?string $navigationGroup = 'Manajemen Produk';
+    protected static ?string $pluralModelLabel = 'Kategori';
 
     protected static ?string $navigationIcon = 'heroicon-m-list-bullet';
 

@@ -27,7 +27,10 @@ Route::prefix('v1')->group(function () {
         Route::get('/makanan', [App\Http\Controllers\API\Pembeli\MakananController::class, 'index']);
         Route::get('/makanan/{id}', [App\Http\Controllers\API\Pembeli\MakananController::class, 'detail']);
         Route::get('/kategori', [App\Http\Controllers\API\Pembeli\MakananController::class, 'kategori']);
-        
+
+        Route::get('/artikel', [App\Http\Controllers\API\Pembeli\ArtikelController::class, 'index']);
+        Route::get('/artikel/{slug}', [App\Http\Controllers\API\Pembeli\ArtikelController::class, 'show']);
+
         Route::middleware('auth:sanctum')->group(function () {
             Route::get('/profile', [App\Http\Controllers\API\Pembeli\ProfileController::class, 'show']);
 

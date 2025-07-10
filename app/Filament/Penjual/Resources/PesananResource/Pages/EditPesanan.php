@@ -27,6 +27,12 @@ class EditPesanan extends EditRecord
 
             if ($makanan && $makanan->current_stock >= $this->record->quantity) {
                 $makanan->current_stock -= $this->record->quantity;
+
+                // Jika stok terakhir, update status_makanan ke 'habis_terjual'
+                if ($makanan->current_stock == 0) {
+                    $makanan->status_makanan = 'habis_terjual';
+                }
+
                 $makanan->save();
             } else {
                 throw new \Exception('Stok tidak mencukupi untuk mengonfirmasi pesanan.');

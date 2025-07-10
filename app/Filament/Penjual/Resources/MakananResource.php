@@ -21,6 +21,7 @@ class MakananResource extends Resource
     protected static ?string $navigationLabel = 'Makanan';
     protected static ?string $navigationGroup = 'Manajemen Produk';
 
+    protected static ?string $pluralModelLabel = 'Makanan';
 
     protected static ?string $navigationIcon = 'heroicon-o-cake';
 

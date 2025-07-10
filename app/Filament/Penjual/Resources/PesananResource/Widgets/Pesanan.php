@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\PesananResource\Widgets;
+namespace App\Filament\Penjual\Resources\PesananResource\Widgets;
 
 use App\Models\Artikel;
 use App\Models\Pesanan as ModelsPesanan;
@@ -11,13 +11,17 @@ class Pesanan extends BaseWidget
 {
     protected function getCards(): array
     {
-        $totalPenjualan = ModelsPesanan::whereIn('status', [
-            'dikonfirmasi',
-            'siap_diambil',
-            'sudah_diambil'
-        ])->sum('total_price');
+        $penjualId = auth()->user()->penjual->id;
 
-        $totalArtikel = Artikel::count();
+        $totalPenjualan = ModelsPesanan::where('penjual_id', $penjualId)
+            ->whereIn('status', [
+                'dikonfirmasi',
+                'siap_diambil',
+                'sudah_diambil'
+            ])
+            ->sum('total_price');
+
+        $totalPesanan = ModelsPesanan::where('penjual_id', $penjualId)->count();
 
         return [
             Stat::make('Total Penjualan', 'Rp ' . number_format($totalPenjualan, 0, ',', '.'))
@@ -25,14 +29,9 @@ class Pesanan extends BaseWidget
                 ->descriptionIcon('heroicon-o-currency-dollar')
                 ->color('success'),
 
-            Stat::make('Total Pesanan', ModelsPesanan::count())
+            Stat::make('Total Pesanan', $totalPesanan)
                 ->description('Jumlah total pesanan yang telah dibuat')
                 ->descriptionIcon('heroicon-o-shopping-cart')
-                ->color('primary'),
-
-            Stat::make('Total Artikel', $totalArtikel)
-                ->description('Jumlah total artikel')
-                ->descriptionIcon('heroicon-o-newspaper')
                 ->color('primary'),
         ];
     }
