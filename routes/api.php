@@ -41,4 +41,7 @@ Route::prefix('v1')->group(function () {
             Route::post('/pesanan/{id}/ulasan', [App\Http\Controllers\API\Pembeli\PesananController::class, 'buatUlasan']);
         });
     });
+    Route::prefix('penjual')->group(function () {
+        Route::get('/', [App\Http\Controllers\API\Pembeli\PenjualController::class, 'index']);
+    });
 });

@@ -47,7 +47,7 @@ class MakananResource extends Resource
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('penjual.nama_toko')->label('Nama Toko'),
                 Tables\Columns\TextColumn::make('kategori.nama')->label('Kategori'),
-                Tables\Columns\TextColumn::make('discounted_price')->money('IDR'),
+                Tables\Columns\TextColumn::make('original_price')->money('IDR'),
                 Tables\Columns\TextColumn::make('current_stock')->label('Stok'),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()

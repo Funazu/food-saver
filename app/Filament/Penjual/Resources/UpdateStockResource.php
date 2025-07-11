@@ -100,6 +100,12 @@ class UpdateStockResource extends Resource
         ];
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('penjual_id', auth()->user()->penjual->id);
+    }
+
     public static function canCreate(): bool
     {
         return false; // disable tombol Create

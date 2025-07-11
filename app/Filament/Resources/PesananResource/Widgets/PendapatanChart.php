@@ -22,6 +22,7 @@ class PendapatanChart extends ChartWidget
             $totalPendapatan = Pesanan::whereDate('order_date', $date)
                 ->where('status', '!=', 'dibatalkan_pembeli')
                 ->where('status', '!=', 'dibatalkan_penjual')
+                ->where('status', '!=', 'pending')
                 ->sum('total_price');
 
             $data[] = $totalPendapatan;
