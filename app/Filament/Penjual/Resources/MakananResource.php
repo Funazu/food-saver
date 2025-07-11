@@ -82,7 +82,7 @@ class MakananResource extends Resource
                     ->image()
                     ->label('Gambar Makanan')
                     ->directory('makanans')
-                    ->disk('public'), // gunakan disk 'public' agar file disimpan di folder public/storage/makanans
+                    ->disk('public'),
             ]);
     }
 
@@ -126,6 +126,12 @@ class MakananResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('penjual_id', auth()->user()->penjual->id);
     }
 
     public static function getPages(): array
