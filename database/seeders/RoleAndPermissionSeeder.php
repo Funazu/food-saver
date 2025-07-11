@@ -19,7 +19,7 @@ class RoleAndPermissionSeeder extends Seeder
         $penjual->givePermissionTo($accessPanelPenjual);
 
         // Buat role admin
-        $admin = Role::firstOrCreate(['name' => 'admin']);
+        $admin = Role::firstOrCreate(['name' => 'super_admin']);
         $admin->givePermissionTo($accessPanelAdmin);
 
         // Tambahkan permission tambahan sesuai kebutuhan (misal access_resource_*)

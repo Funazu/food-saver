@@ -68,9 +68,6 @@ class PenjualResource extends Resource
                     }
                 })
                 ->dehydrated(true), // biar ikut disimpan ke controller resource
-
-
-
         ]);
     }
 
@@ -96,9 +93,17 @@ class PenjualResource extends Resource
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Tanggal Dibuat')
+                    ->label('Tanggal Bergabung')
                     ->dateTime()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('status_verifikasi')
+                    ->badge()
+                    ->color(fn($state) => match ($state) {
+                        'verified' => 'success',
+                        'rejected' => 'danger',
+                        'pending' => 'warning',
+                        default => 'secondary',
+                    }),
             ])
             ->filters([
                 //
