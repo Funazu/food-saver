@@ -17,8 +17,8 @@
                 extend: {
                     colors: {
                         primary: {
-                            DEFAULT: '#f59e0b',
-                            dark: '#d97706',
+                            DEFAULT: '#16a34a',
+                            dark: '#16a34a',
                         }
                     }
                 }
